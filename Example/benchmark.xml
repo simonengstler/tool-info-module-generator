@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<benchmark tool="StaticAnalyzer" benchmarkname="StaticAnalyzerBenchmark">
+    <tasks>
+        <include>test.c</include>
+    </tasks>
+    <options>
+        <option>--some-option</option>
+    </options>
+</benchmark>
