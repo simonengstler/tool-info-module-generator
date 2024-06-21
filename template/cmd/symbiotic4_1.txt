@@ -1,0 +1,1 @@
+symbiotic --prp=memsafety task.c

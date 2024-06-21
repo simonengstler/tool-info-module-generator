@@ -1,72 +1,75 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import datetime
 import subprocess
 
 load_dotenv(".env")
 
 client = OpenAI(
-    api_key = os.environ.get("OPENAI_API_KEY"),
+    api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
 def generate_tool_info_module(prompt):
-
+    #return "test"
+    
     completion = client.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a coding assistant that returns a fitting python tool_info_module file for a given CLI command, given other <CLI command - tool_info_module> pairs."},
-        {"role": "user", "content": prompt}
-  ]
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a coding assistant that returns a fitting python tool_info_module file for a given CLI command, given other <CLI command - tool_info_module> pairs."},
+            {"role": "user", "content": prompt}
+        ]
     )
-    print(completion)
     return completion.choices[0].message.content
 
-# Define function to run benchexec with generated tool-info-module
-def run_benchexec(tool_info_module_path):
-    # Assuming benchexec command and options
-    benchexec_command = ['benchexec', '--tool-info', tool_info_module_path, 'benchmark.xml']
-    try:
-        subprocess.run(benchexec_command, check=True)
-        return True, None  # Successful execution
-    except subprocess.CalledProcessError as e:
-        return False, e.output.decode('utf-8')  # Failed execution, return error message
+def run_benchexec_test(p_folder, tool_info_module_file):
+    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool_info_module_file} --no-container"
+    return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True)
+    print("Command output:", result.stdout)
+    print("Command error (if any):", result.stderr)
 
-# Main function
 def main():
 
-    with open('prompt_prefix.txt', 'r') as f:
-        prompt_prefix = f.read()
+    #tool = "cbmc_1"
+    #tool = "goblint_1"
+    tool = "javac_1"
 
-    #cli_command = input("Enter CLI command: ")
-    cli_command = "cbmc --xml-ui task.c"
+    with open(f'template/cmd/{tool}.txt', 'r') as f:
+        cli_command = f.read()
 
-    prompt = f"{prompt_prefix}\n {cli_command}\n"
-    print(f"Prompt:\n{prompt}")
+    # Create a unique log folder
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_folder = os.path.join("logs", f"{tool}_{timestamp}")
+    os.makedirs(log_folder, exist_ok=True)
 
-    num_iterations = 1
-    
-    for i in range(num_iterations):
+
+    for prefix in os.listdir('template/prefixes'):
+        if not prefix.endswith(".txt"):
+            continue
+        with open(f'template/prefixes/{prefix}', 'r') as f:
+            prompt_prefix = f.read()
+
+        prompt = f"{prompt_prefix}\n {cli_command}\n"
 
         tool_info_module = generate_tool_info_module(prompt)
+        cleaned_tool_info_module = tool_info_module.replace("```python","").replace("```","").strip()
 
-        tool_info_module_path = f"tool_info_module.py"
-        with open(tool_info_module_path, 'w') as f:
-            f.write(str(tool_info_module))
+        # Create a folder for the current p-file and save the generated tool_info_module as well as the prompt
+        p_folder = os.path.join(f"{log_folder}", f"{prefix.replace('.txt','')}")
+        os.makedirs(p_folder, exist_ok=True)
+        tim_file = os.path.join(p_folder, f"{tool}.py") 
+        with open(tim_file, 'w') as f:
+            f.write(cleaned_tool_info_module)
+        prompt_file = os.path.join(p_folder, "prompt.txt")
+        with open(prompt_file, 'w') as f:
+            f.write(prompt)
 
-        success = True
-        error_message = None
-        #success, error_message = run_benchexec(tool_info_module_path)
+        # Run benchexec test on the generated tool_info_module
+        result = run_benchexec_test(p_folder, tim_file)
+        exex_result_file = os.path.join(p_folder, "benchexec_result.txt")
+        with open(exex_result_file, 'w') as f:
+            f.write(result)
 
-        # Check if execution was successful
-        if success:
-            print("Task successful!")
-            break
-        else:
-            print(f"Iteration {i+1} failed with error:\n{error_message}")
-
-            prompt = error_message
-            # Provide error message to GPT-3.5 to generate a new tool-info-module
-            # (This part needs integration with GPT-3.5 API)
 
 if __name__ == "__main__":
     main()
