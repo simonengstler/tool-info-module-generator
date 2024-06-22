@@ -23,7 +23,11 @@ def generate_tool_info_module(prompt):
     return completion.choices[0].message.content
 
 def run_benchexec_test(p_folder, tool_info_module_file):
-    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool_info_module_file} --no-container"
+    # copy the tool_info_module_file to the directory
+    command = f"sudo cp {tool_info_module_file} /usr/lib/python3/dist-packages/benchexec/tools"
+    subprocess.run(command, shell=True)
+
+    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool_info_module_file} --tool-directory ./template/mock_exes --no-container"
     return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True)
     print("Command output:", result.stdout)
     print("Command error (if any):", result.stderr)
