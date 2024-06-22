@@ -1,0 +1,26 @@
+Name of tool module: “goblint”
+Full name of tool module: “benchexec.tools.goblint”
+Documentation of tool module:
+	Tool info for Goblint.
+Name of tool: “Goblint”
+Webpage: “https://goblint.in.tum.de/”
+Executable: “/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint”
+WARNING: Path to executable is absolute, this might be problematic in scenarios where runs are distributed to other machines.
+Working directory: “.”
+Working directory (absolute path): “/home/simon/Documents/tool-info-module-generator/template/mock_exes”
+Program files:
+	“/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint”
+Program files (absolute paths):
+	“/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint”
+Minimal command line:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', 'INPUT.FILE']”
+Command line with parameter:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', '-SOME_OPTION', 'INPUT.FILE']”
+Command line with property file:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', '--sets', 'ana.specification', 'PROPERTY.PRP', 'INPUT.FILE']”
+Command line with multiple input files:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', 'INPUT1.FILE', 'INPUT2.FILE']”
+Command line CPU-time limit:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', 'INPUT.FILE']”
+Command line SV-Benchmarks task:
+	“['/home/simon/Documents/tool-info-module-generator/template/mock_exes/goblint', '--sets', 'ana.specification', 'PROPERTY.PRP', '--sets', 'exp.architecture', '32bit', 'INPUT.FILE']”

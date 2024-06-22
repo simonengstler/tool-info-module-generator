@@ -27,16 +27,16 @@ def run_benchexec_test(p_folder, tool_info_module_file, tool):
     command = f"sudo cp {tool_info_module_file} /usr/lib/python3/dist-packages/benchexec/tools"
     subprocess.run(command, shell=True)
 
-    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool} --tool-directory ./template/mock_exes --no-container"
+    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool} --no-container"
     return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True)
     print("Command output:", result.stdout)
     print("Command error (if any):", result.stderr)
 
 def main():
 
-    #tool = "cbmc_1"
+    tool = "cbmc_1"
     #tool = "goblint_1"
-    tool = "javac_1"
+    #tool = "javac_1"
 
     with open(f'template/cmd/{tool}.txt', 'r') as f:
         cli_command = f.read()

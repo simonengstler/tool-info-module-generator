@@ -1,0 +1,32 @@
+simon@ubuntu:~/Documents/tool-info-module-generator$ PATH=$PWD:$PATH python3 -m benchexec.test_tool_info cbmc --tool-directory ./template/mock_exes --no-container
+Name of tool module: “cbmc”
+Full name of tool module: “benchexec.tools.cbmc”
+Documentation of tool module:
+	Tool info for CBMC.
+	It always adds --xml-ui to the command-line arguments for easier parsing of
+	the output, unless a propertyfile is passed -- in which case running under
+	SV-COMP conditions is assumed.
+Name of tool: “CBMC”
+Webpage: “http://www.cprover.org/cbmc/”
+Executable: “./template/mock_exes/cbmc”
+Executable (absolute path): “/home/simon/Documents/tool-info-module-generator/template/mock_exes/cbmc”
+Version: “--version”
+WARNING: Version does not start with a digit, please remove any prefixes like the tool name.
+Working directory: “.”
+Working directory (absolute path): “/home/simon/Documents/tool-info-module-generator”
+Program files:
+	“./template/mock_exes/cbmc”
+Program files (absolute paths):
+	“/home/simon/Documents/tool-info-module-generator/template/mock_exes/cbmc”
+Minimal command line:
+	“['template/mock_exes/cbmc', '--xml-ui', 'INPUT.FILE']”
+Command line with parameter:
+	“['template/mock_exes/cbmc', '-SOME_OPTION', '--xml-ui', 'INPUT.FILE']”
+Command line with property file:
+	“['template/mock_exes/cbmc', '--propertyfile', 'PROPERTY.PRP', 'INPUT.FILE']”
+Command line with multiple input files:
+	“['template/mock_exes/cbmc', '--xml-ui', 'INPUT1.FILE', 'INPUT2.FILE']”
+Command line CPU-time limit:
+	“['template/mock_exes/cbmc', '--xml-ui', 'INPUT.FILE']”
+Command line SV-Benchmarks task:
+	“['template/mock_exes/cbmc', '--propertyfile', 'PROPERTY.PRP', '--32', 'INPUT.FILE']”
