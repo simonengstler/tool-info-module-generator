@@ -68,7 +68,7 @@ def main():
         result = run_benchexec_test(p_folder, tim_file)
         exex_result_file = os.path.join(p_folder, "benchexec_result.txt")
         with open(exex_result_file, 'w') as f:
-            f.write(result)
+            f.write(str(result))
 
 
 if __name__ == "__main__":
