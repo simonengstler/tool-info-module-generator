@@ -22,12 +22,12 @@ def generate_tool_info_module(prompt):
     )
     return completion.choices[0].message.content
 
-def run_benchexec_test(p_folder, tool_info_module_file):
+def run_benchexec_test(p_folder, tool_info_module_file, tool):
     # copy the tool_info_module_file to the directory
     command = f"sudo cp {tool_info_module_file} /usr/lib/python3/dist-packages/benchexec/tools"
     subprocess.run(command, shell=True)
 
-    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool_info_module_file} --tool-directory ./template/mock_exes --no-container"
+    command = f"PATH=$PWD:$PATH python3 -m benchexec.test_tool_info {tool} --tool-directory ./template/mock_exes --no-container"
     return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True)
     print("Command output:", result.stdout)
     print("Command error (if any):", result.stderr)
@@ -48,6 +48,10 @@ def main():
 
 
     for prefix in os.listdir('template/prefixes'):
+        if not prefix.startswith("p1"):
+            # activate to reduce api calls by just using prefix p1
+            # continue
+            pass
         if not prefix.endswith(".txt"):
             continue
         with open(f'template/prefixes/{prefix}', 'r') as f:
@@ -69,7 +73,7 @@ def main():
             f.write(prompt)
 
         # Run benchexec test on the generated tool_info_module
-        result = run_benchexec_test(p_folder, tim_file)
+        result = run_benchexec_test(p_folder, tim_file, tool)
         exex_result_file = os.path.join(p_folder, "benchexec_result.txt")
         with open(exex_result_file, 'w') as f:
             f.write(str(result))
