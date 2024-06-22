@@ -75,9 +75,13 @@ def main():
         # Run benchexec test on the generated tool_info_module
         result = run_benchexec_test(p_folder, tim_file, tool)
         exex_result_file = os.path.join(p_folder, "benchexec_result.txt")
+        
         with open(exex_result_file, 'w') as f:
-            f.write(str(result))
-
+            f.write("stdout:\n")
+            f.write(result.stdout)
+            f.write("\n")
+            f.write("stderr:\n")
+            f.write(result.stderr)
 
 if __name__ == "__main__":
     main()
