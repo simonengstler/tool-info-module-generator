@@ -17,11 +17,15 @@ def save_tim_file(p_folder, tool_info_module, prompt, tool, iteration):
     with open(prompt_file, 'w') as f:
         f.write(prompt)
 
-    tim_file = os.path.join(p_folder, f"{tool}_it{iteration}.py") 
-    with open(tim_file, 'w') as f:
+    tim_file_it = os.path.join(p_folder, f"{tool}_it{iteration}.py") 
+    with open(tim_file_it, 'w') as f:
         f.write(tool_info_module)
 
-    return tim_file
+    tim_file_override = os.path.join(p_folder, f"{tool}.py") 
+    with open(tim_file_override, 'w') as f:
+        f.write(tool_info_module)
+
+    return tim_file_override
 
 def save_results(p_folder, module_test_result, iteration):
     result_file = os.path.join(p_folder, f"benchexec_result_it{iteration}.txt")

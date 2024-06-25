@@ -34,9 +34,9 @@ def create_tool_info_module_file(tool, cli_command, log_folder):
                 prompt = llm.build_refinement_prompt(module_test_result, tool_info_module)
                 tool_info_module = llm.generate_tool_info_module(prompt, llm.context_refinement)
 
-            tim_file = logging.save_tim_file(p_folder, tool_info_module, prompt, tool, iteration)
+            tim_file_override = logging.save_tim_file(p_folder, tool_info_module, prompt, tool, iteration)
 
-            module_test_result = test_exec.run_benchexec_test(p_folder, tim_file, tool)
+            module_test_result = test_exec.run_benchexec_test(p_folder, tim_file_override, tool)
 
             logging.save_results(p_folder, module_test_result, iteration)
 

@@ -17,6 +17,7 @@ def strip_python_completion(completion):
 
 def generate_tool_info_module(prompt, context):
     completion = client.chat.completions.create(
+        #model="gpt-4o",
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": context},
@@ -31,5 +32,5 @@ def generate_tool_info_module(prompt, context):
 def build_refinement_prompt(module_test_result, tool_info_module):
     prompt = f"Benchexec's test_tool_info returned this result for the following tool-info module\n" \
             f"Result:\n{module_test_result}\n\ntool-info module tested:\n{tool_info_module}\n\nPlease refine the tool-info module\n" \
-            "Return nothing but python code."
+            "Return python code only."
     return prompt

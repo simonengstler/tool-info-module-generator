@@ -13,6 +13,8 @@ client = OpenAI(
 # Function to generate a response from the OpenAI API and calculate the cost
 def generate_response(prompt):
     completion = client.chat.completions.create(
+        #model="gpt-4-turbo",
+        #model="gpt-4o",
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -36,14 +38,19 @@ def generate_response(prompt):
 # Main function
 def main():
 
+    # gpt-3.5-turbo
     # Joke: $0.000074
     # P0: $0.001620
     # P2: $0.003408
-
+    
+    # gpt-4o
+    # Joke: $0.000074
+    # P0: $0.000690
+    # P2: $0.004344
 
     #prompt = "Tell me a joke about programming."
     
-    with open(f'prefix/p2.txt', 'r') as f:
+    with open(f'template/prefixes/p0.txt', 'r') as f:
         prompt = f.read()
 
     response, prompt_tokens, completion_tokens, total_tokens, cost = generate_response(prompt)
