@@ -1,1 +1,1 @@
-cbmc --xml-ui task.c
+cbmc --64 --propertyfile propertyfile.prp task.c

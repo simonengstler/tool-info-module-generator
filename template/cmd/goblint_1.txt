@@ -1,1 +1,1 @@
-goblint --enable warn.all task.c
+goblint --sets ana.specification propertyfile.prp task.c

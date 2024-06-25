@@ -95,4 +95,5 @@ class Tool(benchexec.tools.template.BaseTool2):
             return sum(decimal.Decimal(value) for value in matches)
         return None
 
-Generate a BenchExec tool-info module python file for the following tool:
+Generate a BenchExec tool-info module python file for the following tool.
+Return python code only.

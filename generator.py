@@ -16,7 +16,7 @@ def generate_tool_info_module(prompt):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a coding assistant that returns a fitting python tool_info_module file for a given CLI command, given other <CLI command - tool_info_module> pairs."},
+            {"role": "system", "content": "You are a coding assistant that returns a fitting python tool_info_module file for a given CLI command, given other <CLI command,tool_info_module> pairs."},
             {"role": "user", "content": prompt}
         ]
     )

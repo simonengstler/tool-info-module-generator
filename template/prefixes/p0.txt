@@ -1,1 +1,2 @@
-Generate a BenchExec tool-info module python file for the following tool:
+Generate a BenchExec tool-info module python file for the following tool.
+Return python code only.
