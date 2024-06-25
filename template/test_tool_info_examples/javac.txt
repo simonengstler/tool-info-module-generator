@@ -1,0 +1,27 @@
+Name of tool module: “javac”
+Full name of tool module: “benchexec.tools.javac”
+Documentation of tool module:
+	This calls javac and checks that a task consisting of Java files compiles.
+Name of tool: “javac”
+Executable: “/usr/bin/javac”
+WARNING: Path to executable is absolute, this might be problematic in scenarios where runs are distributed to other machines.
+Working directory: “.”
+Working directory (absolute path): “/home/simon/Documents/tool-info-module-generator”
+Program files:
+	“/usr/bin/javac”
+Program files (absolute paths):
+	“/usr/bin/javac”
+Minimal command line:
+	“['/usr/bin/javac']”
+WARNING: Tool module ignores input file.
+Command line with parameter:
+	“['/usr/bin/javac', '-SOME_OPTION']”
+Command line with property file:
+	“['/usr/bin/javac']”
+WARNING: Tool module ignores property file.
+Command line with multiple input files:
+	“['/usr/bin/javac']”
+Command line CPU-time limit:
+	“['/usr/bin/javac']”
+Command line SV-Benchmarks task:
+	“['/usr/bin/javac']”

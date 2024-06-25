@@ -231,4 +231,4 @@ class Tool(benchexec.tools.template.BaseTool):
         return status
 
 Generate a BenchExec tool-info module python file for the following tool.
-Return python code only.
+Return python code only. Make sure to inherit from BaseTool2.

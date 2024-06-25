@@ -1,4 +1,3 @@
-simon@ubuntu:~/Documents/tool-info-module-generator$ PATH=$PWD:$PATH python3 -m benchexec.test_tool_info cbmc --tool-directory ./template/mock_exes --no-container
 Name of tool module: “cbmc”
 Full name of tool module: “benchexec.tools.cbmc”
 Documentation of tool module:
