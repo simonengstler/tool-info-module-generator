@@ -31,6 +31,6 @@ def generate_tool_info_module(prompt, context):
 
 def build_refinement_prompt(module_test_result, tool_info_module):
     prompt = f"Benchexec's test_tool_info returned this result for the following tool-info module\n" \
-            f"Result:\n{module_test_result}\n\ntool-info module tested:\n{tool_info_module}\n\nPlease refine the tool-info module\n" \
+            f"Result:\n{module_test_result}\n\ntool-info module tested:\n{tool_info_module}\n\nPlease fix/improve the tool-info module accordingly or try to reduce warnings\n" \
             "Return python code only."
     return prompt

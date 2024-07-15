@@ -1,9 +1,25 @@
 import subprocess
+import os
+from dotenv import load_dotenv
+
+load_dotenv(".env")
 
 def run_benchexec_test(p_folder, tim_file, tool):
+    path_to_lib = os.environ.get("PYTHON_LIB_PATH")
+
+    # Source .zshrc and set the environment variables
+    source_cmd = "source ~/.zshrc && echo $PATH"
+    result = subprocess.run(source_cmd, shell=True, capture_output=True, text=True, executable='/bin/zsh')
+    
+    # Extract the PATH from the sourced environment
+    new_path = result.stdout.strip()
+    
+    # Set the new PATH to the environment
+    os.environ["PATH"] = new_path
+
     # copy the tool_info_module to the benchexec python library
-    command = f"sudo cp {tim_file} /usr/lib/python3/dist-packages/benchexec/tools"
+    command = f"sudo cp {tim_file} {path_to_lib}/benchexec/tools"
     subprocess.run(command, shell=True)
 
     command = f"python3 -m benchexec.test_tool_info {tool} --no-container"
-    return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True)
+    return subprocess.run(command, shell=True, cwd=p_folder, capture_output=True, text=True).stderr

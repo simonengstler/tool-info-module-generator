@@ -30,9 +30,19 @@ def save_tim_file(p_folder, tool_info_module, prompt, tool, iteration):
 def save_results(p_folder, module_test_result, iteration):
     result_file = os.path.join(p_folder, f"benchexec_result_it{iteration}.txt")
     with open(result_file, 'w') as f:
-        f.write("stdout:\n")
-        f.write(module_test_result.stdout)
-        f.write("\n")
-        f.write("stderr:\n")
-        f.write(module_test_result.stderr)
+        f.write(module_test_result)
 
+def save_best_result_if_available(best_result, tool):
+    if not best_result:
+        print("No valid result could be generated.")
+    else:
+        os.makedirs("best_result", exist_ok=True)
+
+        best_result_log = os.path.join("best_result", f"{tool}.txt")
+        best_result_tim = os.path.join("best_result", f"{tool}.py")
+
+        with open(best_result_tim, 'w') as f:
+            f.write(best_result[0])
+
+        with open(best_result_log, 'w') as f:
+            f.write(best_result[1])

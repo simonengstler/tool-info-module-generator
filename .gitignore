@@ -1,6 +1,8 @@
 .env
+.DS_Store
 
 logs
+best_result
 
 notes.txt
 
