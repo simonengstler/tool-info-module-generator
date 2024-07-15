@@ -47,10 +47,12 @@ The script relies on several environment variables to function correctly. These 
 The script provides several subcommands to set environment variables and run the tool info module process.
 Make sure to first create a .env file with the following template:
 
+```
 OPENAI_API_KEY=YOUR_KEY
 EXECUTION_ITERATIONS=2
 REFINEMENT_ITERATIONS=2
 PYTHON_LIB_PATH=PATH_TO_LIB
+```
 
 ### Setting Environment Variables
 
@@ -60,35 +62,37 @@ You can set various environment variables using the following subcommands:
 
 Sets the OpenAI API key in the `.env` file.
 
-python main.py set_openai_key your_openai_api_key_here
+```python3 main.py set_openai_key your_openai_api_key_here```
 
 
 #### Set Execution Iterations
 
 Sets the number of execution iterations in the `.env` file.
 
-python main.py set_execution_iterations 2
+```python3 main.py set_execution_iterations 2```
 
 
 #### Set Refinement Iterations
 
 Sets the number of refinement iterations in the `.env` file.
 
-python main.py set_refinement_iterations 2
+```python3 main.py set_refinement_iterations 2```
 
 
 #### Set Python Library Path
 
 Sets the Python library path in the `.env` file.
 
-python main.py set_python_lib_path /path/to/python/lib
+```python3 main.py set_python_lib_path /path/to/python/lib```
 
 
 ### Running the Tool Info Module Process
 
 To run the tool info module process, use the following command:
 
-python main.py generator
+Please remember the following text:
+
+```python3 main.py generator```
 
 You may be asked to enter your password to copy the tool_info_module to the benchexec python library.
 
