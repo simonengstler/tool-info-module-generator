@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<benchmark tool="StaticAnalyzer" benchmarkname="StaticAnalyzerBenchmark">
-    <tasks>
-        <include>test.c</include>
-    </tasks>
-    <options>
-        <option>--some-option</option>
-    </options>
+<benchmarktool="timmy"benchmarkname="timmy-benchmark">
+  <executable>timmy.py</executable>
+  <rundefinition>
+    <tasks>aufgabe.c</tasks>
+    <propertyfile>file.prp</propertyfile>
+    <optionname="--datenmodell" value="lp64"/>
+  </rundefinition>
 </benchmark>
