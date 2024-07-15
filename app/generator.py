@@ -62,8 +62,8 @@ def determine_and_log_best_result_if_available(results, tool):
     logging.save_best_result_if_available(best_result, tool)
 
 def generator():
-    # tool, cli_command = input.get_cli_command_from_file()
-    tool, cli_command = input.get_cli_command_from_user()
+    tool, cli_command = input.get_cli_command_from_file()
+    # tool, cli_command = input.get_cli_command_from_user()
 
     results = create_tool_info_module_file(tool, cli_command)
 
