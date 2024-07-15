@@ -36,13 +36,16 @@ def save_best_result_if_available(best_result, tool):
     if not best_result:
         print("No valid result could be generated.")
     else:
-        os.makedirs("best_result", exist_ok=True)
+        os.makedirs("results", exist_ok=True)
 
-        best_result_log = os.path.join("best_result", f"{tool}.txt")
-        best_result_tim = os.path.join("best_result", f"{tool}.py")
+        best_result_log = os.path.join("results", f"{tool}.txt")
+        best_result_tim = os.path.join("results", f"{tool}.py")
 
         with open(best_result_tim, 'w') as f:
             f.write(best_result[0])
 
         with open(best_result_log, 'w') as f:
             f.write(best_result[1])
+
+        print("Check 'results' for the generated tool-info module. Other results can be found in the log folder.")
+        

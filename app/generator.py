@@ -7,13 +7,11 @@ import app.test_exec as test_exec
 
 load_dotenv(".env")
 
-execution_iterations = int(os.environ.get("EXECUTION_ITERATIONS"))
-refinement_iterations = int(os.environ.get("REFINEMENT_ITERATIONS"))
-
 def create_tool_info_module_file(tool, cli_command):
-    
-    results = []
+    execution_iterations = int(os.environ.get("EXECUTION_ITERATIONS"))
+    refinement_iterations = int(os.environ.get("REFINEMENT_ITERATIONS"))
 
+    results = []
     for _ in range(1, execution_iterations + 1):
         log_folder = logging.create_unique_log_folder(tool)
 
@@ -53,15 +51,19 @@ def determine_and_log_best_result_if_available(results, tool):
     # filter out all results that do not contain "Command line SV-Benchmarks task:" as they are not valid
     results = list(filter(lambda x: "Command line SV-Benchmarks task:" in x[1], results))
 
+    if not results:
+        print("No valid result could be generated.")
+        return
+
     # determine the pair in results with the least occurrences of warnings
     best_result = min(results, key=lambda x: x[1].count("WARNING"))
 
     # save the best result to a file
     logging.save_best_result_if_available(best_result, tool)
 
-def main():
-    tool, cli_command = input.get_cli_command_from_file()
-    # tool, cli_command = input.get_cli_command_from_user()
+def generator():
+    # tool, cli_command = input.get_cli_command_from_file()
+    tool, cli_command = input.get_cli_command_from_user()
 
     results = create_tool_info_module_file(tool, cli_command)
 
