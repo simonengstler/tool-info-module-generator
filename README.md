@@ -68,7 +68,7 @@ Sets the OpenAI API key in the `.env` file.
 #### Set Python Library Path
 
 Sets the Python library path in the `.env` file.
-E.g. `/usr/lib/python3/dist-packages` on Linux or /Users/YOUR_USERNAME/Library/Python/3.9/lib/python/site-packages on macOS
+E.g. `/usr/lib/python3/dist-packages` on Linux or `/Users/YOUR_USERNAME/Library/Python/3.9/lib/python/site-packages` on macOS
 
 ```python3 main.py set_python_lib_path /path/to/python/lib```
 

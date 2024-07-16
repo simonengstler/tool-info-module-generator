@@ -10,7 +10,7 @@ def add_env_variable(key, value):
     print(f"Environment variable '{key}' set to '{value}' in .env file.")
 
 def main():
-    parser = argparse.ArgumentParser(description="Manage API keys and tool information modules.")
+    parser = argparse.ArgumentParser(description="Autogenerate tool-info modules for BenchExec using GPT-3.5.")
     subparsers = parser.add_subparsers(dest="command", help="Subcommands")
 
     # Subcommands to set environment variables
@@ -26,8 +26,8 @@ def main():
     parser_set_python_lib_path = subparsers.add_parser('set_python_lib_path', help="Set the Python library path")
     parser_set_python_lib_path.add_argument('python_lib_path', type=str, help="Python library path to be added to the .env file")
 
-    # Subcommand to run the tool info module process
-    parser_generator = subparsers.add_parser('generator', help="Run the tool info module process")
+    # Subcommand to run the tool info-module process
+    parser_generator = subparsers.add_parser('generator', help="Run the tool-info module process")
 
     args = parser.parse_args()
 

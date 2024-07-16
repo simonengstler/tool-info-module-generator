@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<benchmarktool="timmy"benchmarkname="timmy-benchmark">
-  <executable>timmy.py</executable>
-  <rundefinition>
-    <tasks>aufgabe.c</tasks>
-    <propertyfile>file.prp</propertyfile>
-    <optionname="--datenmodell" value="lp64"/>
-  </rundefinition>
+<benchmark tool="timmy">
+  
+    <rundefinition>
+        <option name="--datenmodell">lp64</option>
+    </rundefinition>
+  
+
+    <tasks name="TaskName">
+        <propertyfile>file.prp</propertyfile>
+    </tasks>    
+
 </benchmark>
