@@ -1,0 +1,13 @@
+
+format_version: '2.0'
+
+input_files: 
+  - ./aufgabe.c
+
+properties:
+  - property_file: ./file.prp
+    expected_verdict: true
+
+options:
+  language: C
+  data_model: LP64

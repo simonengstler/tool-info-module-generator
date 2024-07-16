@@ -2,12 +2,11 @@
 <benchmark tool="timmy">
   
     <rundefinition>
-        <option name="--datenmodell">lp64</option>
     </rundefinition>
   
-
     <tasks name="TaskName">
+        <include>aufgabe.yml</include>
         <propertyfile>file.prp</propertyfile>
-    </tasks>    
+    </tasks>
 
 </benchmark>
