@@ -10,7 +10,7 @@ def add_env_variable(key, value):
     print(f"Environment variable '{key}' set to '{value}' in .env file.")
 
 def main():
-    parser = argparse.ArgumentParser(description="Autogenerate tool-info modules for BenchExec using GPT-3.5.")
+    parser = argparse.ArgumentParser(description="Autogenerate tool-info modules for BenchExec using GPT-4o mini.")
     subparsers = parser.add_subparsers(dest="command", help="Subcommands")
 
     # Subcommands to set environment variables
