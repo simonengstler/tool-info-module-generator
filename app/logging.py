@@ -33,13 +33,15 @@ def save_results(p_folder, module_test_result, iteration):
         f.write(module_test_result)
 
 def save_best_result_if_available(best_result, tool):
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
     if not best_result:
         print("No valid result could be generated.")
     else:
         os.makedirs("results", exist_ok=True)
 
-        best_result_log = os.path.join("results", f"{tool}.txt")
-        best_result_tim = os.path.join("results", f"{tool}.py")
+        best_result_log = os.path.join("results", f"{tool}_{timestamp}.txt")
+        best_result_tim = os.path.join("results", f"{tool}_{timestamp}.py")
 
         with open(best_result_tim, 'w') as f:
             f.write(best_result[0])
