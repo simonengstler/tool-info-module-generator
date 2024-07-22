@@ -18,7 +18,8 @@ def strip_python_completion(completion):
 def generate_tool_info_module(prompt, context):
     completion = client.chat.completions.create(
         #model="gpt-4o",
-        model="gpt-3.5-turbo",
+        #model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": context},
             {"role": "user", "content": prompt}

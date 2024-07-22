@@ -15,7 +15,8 @@ def generate_response(prompt):
     completion = client.chat.completions.create(
         #model="gpt-4-turbo",
         #model="gpt-4o",
-        model="gpt-3.5-turbo",
+        #model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
@@ -30,6 +31,7 @@ def generate_response(prompt):
     total_tokens = usage.total_tokens
 
     # Calculate cost (assuming $0.002 per 1,000 tokens)
+    # TODO: double-check/adjust
     cost_per_1000_tokens = 0.002 # $0.0005 input + $0.0015 output
     cost = (total_tokens / 1000) * cost_per_1000_tokens
 
@@ -48,9 +50,12 @@ def main():
     # P0: $0.000690
     # P2: $0.004344
 
+    # gpt-4o-mini
+    # P3: $0.011424
+
     #prompt = "Tell me a joke about programming."
     
-    with open(f'template/prefixes/p0.txt', 'r') as f:
+    with open(f'template/prefixes/p2.txt', 'r') as f:
         prompt = f.read()
 
     response, prompt_tokens, completion_tokens, total_tokens, cost = generate_response(prompt)
