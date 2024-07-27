@@ -1,6 +1,6 @@
 # Tool-Info Module Generator for BenchExec
 
-This tool automates the generation of tool-info module files for [BenchExec](https://github.com/sosy-lab/benchexec) using GPT-3.5.
+This tool automates the generation of tool-info module files for [BenchExec](https://github.com/sosy-lab/benchexec) using GPT-4o mini.
 
 ## Table of Contents
 
