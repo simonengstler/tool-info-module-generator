@@ -12,7 +12,7 @@ def create_tool_info_module_file(tool, cli_command):
     refinement_iterations = int(os.environ.get("REFINEMENT_ITERATIONS"))
 
     results = []
-    for _ in range(1, execution_iterations + 1):
+    for _ in range(execution_iterations):
         log_folder = logging.create_unique_log_folder(tool)
 
         # Iterate over all prefixes and generate a tool_info_module for each
