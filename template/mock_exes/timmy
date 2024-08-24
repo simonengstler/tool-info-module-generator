@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import subprocess
 
 def run_timmy(datenmodell, eigenschaftsfile, sourcefile):
     command = ["timmy", f"--datenmodell={datenmodell}", f"--eigenschaftsfile={eigenschaftsfile}", sourcefile]

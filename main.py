@@ -23,9 +23,6 @@ def main():
     parser_set_refinement_iterations = subparsers.add_parser('set_refinement_iterations', help="Set the refinement iterations")
     parser_set_refinement_iterations.add_argument('refinement_iterations', type=int, help="Refinement iterations to be added to the .env file")
 
-    parser_set_python_lib_path = subparsers.add_parser('set_python_lib_path', help="Set the Python library path")
-    parser_set_python_lib_path.add_argument('python_lib_path', type=str, help="Python library path to be added to the .env file")
-
     # Subcommand to run the tool info-module process
     parser_generator = subparsers.add_parser('generator', help="Run the tool-info module process")
 
@@ -37,8 +34,6 @@ def main():
         add_env_variable("EXECUTION_ITERATIONS", args.execution_iterations)
     elif args.command == "set_refinement_iterations":
         add_env_variable("REFINEMENT_ITERATIONS", args.refinement_iterations)
-    elif args.command == "set_python_lib_path":
-        add_env_variable("PYTHON_LIB_PATH", args.python_lib_path)
     elif args.command == "generator":
         generator()
     else:

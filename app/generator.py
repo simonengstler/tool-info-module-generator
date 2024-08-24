@@ -47,10 +47,10 @@ def create_tool_info_module_file(tool, cli_command):
                     tool_info_module = llm.generate_tool_info_module(prompt, llm.context_refinement)
 
                 # Save the current tool info module and prompt to a file
-                tim_file_override = logging.save_tim_file(p_folder, tool_info_module, prompt, tool, iteration)
+                logging.save_tim_file(p_folder, tool_info_module, prompt, tool, iteration)
 
                 # Run the test on the current tool info module
-                module_test_result = test_exec.run_benchexec_test(p_folder, tim_file_override, tool)
+                module_test_result = test_exec.run_benchexec_test(p_folder, tool)
                 results.append((tool_info_module, module_test_result))
 
                 # Save the test results
