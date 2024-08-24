@@ -1,4 +1,5 @@
 def get_cli_command_from_file():
+    # uncomment the tool that you want to test with
     tool = "cbmc_1"
     #tool = "goblint_1"
     #tool = "javac_1"

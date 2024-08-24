@@ -23,7 +23,7 @@ Before you begin, ensure you have the following installed on your system:
 - `python-dotenv` package
 - BenchExec python library
 - Add `template/mock_exes` to `PATH` (e.g. on Linux: `echo 'export PATH=$PWD/template/mock_exes:$PATH' >> ~/.bashrc`)
-- Provide a (mock) executable (e.g. copy paste an existing one, rename it and make it executable)
+- Provide a (mock) executable (e.g. copy paste an existing one, rename it and make it executable) for the tool that you want to create the tool-info module file for.
 
 ## Installation
 
@@ -91,6 +91,8 @@ Sets the number of refinement iterations in the `.env` file.
 To run the tool info module process, use the following command:
 
 ```python3 main.py generator```
+
+The dialog will ask you to provide the name and an example CLI command of the tool that you want to generate the tool-info module file for.
 
 You may be asked to enter your password to copy the tool_info_module to the benchexec python library.
 
